@@ -8,7 +8,7 @@ import {
   harryPotter5,
   harryPotter6,
   harryPotter7,
-} from './productManagement/productData';
+} from '../productManagement/productData';
 
 describe('Basket Service', () => {
   it('calculateTotal: should not apply discount when purchasing a single book', async () => {

@@ -1,6 +1,6 @@
 // Internal Imports
-import { Product } from './productManagement/Product';
-import { PromotionOptimiser } from './promotionManagement/PromotionOptimiser';
+import { Product } from '../productManagement/Product';
+import { PromotionOptimiser } from '../promotionManagement/PromotionOptimiser';
 /**
  * @description Basket Class, represents a shopping cart/ basket. Conext Pattern.
  */
