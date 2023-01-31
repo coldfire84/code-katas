@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BuyFourHarryPotterBooksSave20Percent = void 0;
+// Internal Imports
+const Promotion_1 = require("./Promotion");
+const qualifyingProducts_1 = require("./qualifyingProducts");
+/**
+ * @description By four, save 20% Promotion, uses Strategy Pattern
+ */
+class BuyFourHarryPotterBooksSave20Percent extends Promotion_1.Promotion {
+    constructor() {
+        super();
+        this.qualifyingProducts = qualifyingProducts_1.qualifyingProducts;
+        this.discount = 0.2; // 20%
+        this.qualifyingProductCount = 4;
+        this.allowMultiplesOfSameProduct = false;
+    }
+}
+exports.BuyFourHarryPotterBooksSave20Percent = BuyFourHarryPotterBooksSave20Percent;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQnV5Rm91ckhhcnJ5UG90dGVyQm9va3NTYXZlMjBQZXJjZW50LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vc3JjL2hhcnJ5UG90dGVyL3Byb21vdGlvbk1hbmFnZW1lbnQvQnV5Rm91ckhhcnJ5UG90dGVyQm9va3NTYXZlMjBQZXJjZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQUFBLG1CQUFtQjtBQUNuQiwyQ0FBd0M7QUFDeEMsNkRBQTBEO0FBQzFEOztHQUVHO0FBQ0gsTUFBYSxvQ0FBcUMsU0FBUSxxQkFBUztJQUNqRTtRQUNFLEtBQUssRUFBRSxDQUFDO1FBQ1IsSUFBSSxDQUFDLGtCQUFrQixHQUFHLHVDQUFrQixDQUFDO1FBQzdDLElBQUksQ0FBQyxRQUFRLEdBQUcsR0FBRyxDQUFDLENBQUMsTUFBTTtRQUMzQixJQUFJLENBQUMsc0JBQXNCLEdBQUcsQ0FBQyxDQUFDO1FBQ2hDLElBQUksQ0FBQywyQkFBMkIsR0FBRyxLQUFLLENBQUM7SUFDM0MsQ0FBQztDQUNGO0FBUkQsb0ZBUUMiLCJzb3VyY2VzQ29udGVudCI6WyIvLyBJbnRlcm5hbCBJbXBvcnRzXG5pbXBvcnQgeyBQcm9tb3Rpb24gfSBmcm9tICcuL1Byb21vdGlvbic7XG5pbXBvcnQgeyBxdWFsaWZ5aW5nUHJvZHVjdHMgfSBmcm9tICcuL3F1YWxpZnlpbmdQcm9kdWN0cyc7XG4vKipcbiAqIEBkZXNjcmlwdGlvbiBCeSBmb3VyLCBzYXZlIDIwJSBQcm9tb3Rpb24sIHVzZXMgU3RyYXRlZ3kgUGF0dGVyblxuICovXG5leHBvcnQgY2xhc3MgQnV5Rm91ckhhcnJ5UG90dGVyQm9va3NTYXZlMjBQZXJjZW50IGV4dGVuZHMgUHJvbW90aW9uIHtcbiAgY29uc3RydWN0b3IoKSB7XG4gICAgc3VwZXIoKTtcbiAgICB0aGlzLnF1YWxpZnlpbmdQcm9kdWN0cyA9IHF1YWxpZnlpbmdQcm9kdWN0cztcbiAgICB0aGlzLmRpc2NvdW50ID0gMC4yOyAvLyAyMCVcbiAgICB0aGlzLnF1YWxpZnlpbmdQcm9kdWN0Q291bnQgPSA0O1xuICAgIHRoaXMuYWxsb3dNdWx0aXBsZXNPZlNhbWVQcm9kdWN0ID0gZmFsc2U7XG4gIH1cbn1cbiJdfQ==
