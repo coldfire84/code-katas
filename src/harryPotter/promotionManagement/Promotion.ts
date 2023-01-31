@@ -1,12 +1,11 @@
 // Internal Imports
 import { Product } from '../productManagement/Product';
-import { PromotionOptimiser } from './PromotionOptimiser';
 /**
  * @description Promotion, abstract/ base class. Promotion Management B/C.
  */
 export abstract class Promotion {
-  protected qualifyingProducts: Array<string>;
   protected discount: number;
+  public qualifyingProducts: Array<string>;
   public qualifyingProductCount: number;
   public allowMultiplesOfSameProduct: boolean;
   /**
@@ -17,9 +16,11 @@ export abstract class Promotion {
     return Array.prototype.includes.call(this.qualifyingProducts, product.id);
   }
   /**
-   * @description Get Promotion-qualifying Products from supplied basket items
+   * @description Checks supplied items against given Promotion and returns products that
+   *   fall in-scope of promotion.
    * @param {Array<Product>} items
    * @param {string} currency
+   * @param {Promotion} promotion
    * @returns {Array<Product>}
    */
   getQualifiedProducts(
@@ -65,38 +66,5 @@ export abstract class Promotion {
       return acc;
     }, 0);
     return discount;
-  }
-  /**
-   * @description Apply discount to given items
-   * @param {Array<Product>} items
-   * @returns {number} discount value agaist qualified products
-   */
-  applyDiscount(items: Array<Product>, currency: string): number {
-    const qualifiedProducts = this.getQualifiedProducts(items, currency);
-    // Too few products for discount to apply, return 0 discount for this promotion
-    if (items.length < this.qualifyingProductCount) return 0;
-    // Check if qualified products divides up by qualifyingProductCount
-    const remainder = qualifiedProducts.length % this.qualifyingProductCount;
-    // If no remainder apply discount to all of the products in qualifiedProducts
-    if (remainder === 0) {
-      return this.calculateDiscount(qualifiedProducts, currency);
-    }
-    // Remainder, calculate discount against what is divisble and perform recursion on remainder
-    else {
-      // Split array into number of products divisible by promotion
-      const discountableProducts = qualifiedProducts.splice(
-        0,
-        qualifiedProducts.length - remainder
-      );
-      // Calculate discount on promotion-applicable products
-      const discount = this.calculateDiscount(discountableProducts, currency);
-      // Take remainder of array, check other promotions for discounts via PromotionOptimiser
-      const remainingProducts = qualifiedProducts.splice(-remainder);
-      const recursionDiscount = PromotionOptimiser.getBestDiscount(
-        remainingProducts,
-        currency
-      );
-      return discount + recursionDiscount;
-    }
   }
 }

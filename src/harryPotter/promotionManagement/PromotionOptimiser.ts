@@ -36,14 +36,51 @@ export class PromotionOptimiser {
     };
     // Iterate through promotions to calculate best discount
     this.promotions().map((promotion) => {
-      const discount = promotion.applyDiscount(items, currency);
-      if (discount > bestResult.discount)
-        bestResult = {
-          promotionName: promotion.constructor.name,
-          discount,
-        };
+      const qualifiedProducts = promotion.getQualifiedProducts(items, currency);
+      // Too few products for discount to apply, skip this promotion
+      if (items.length < promotion.qualifyingProductCount) return;
+      // Check if qualified products divides up by qualifyingProductCount
+      const remainder =
+        qualifiedProducts.length % promotion.qualifyingProductCount;
+      // If no remainder apply discount to all of the products in qualifiedProducts
+      if (remainder === 0) {
+        const discount = promotion.calculateDiscount(
+          qualifiedProducts,
+          currency
+        );
+        if (discount > bestResult.discount)
+          bestResult = {
+            promotionName: promotion.constructor.name,
+            discount,
+          };
+      }
+      // Remainder, calculate discount against what is divisble and perform recursion on remainder
+      else {
+        // Split array into number of products divisible by promotion
+        const discountableProducts = qualifiedProducts.splice(
+          0,
+          qualifiedProducts.length - remainder
+        );
+        // Calculate discount on promotion-applicable products
+        const partialDiscount = promotion.calculateDiscount(
+          discountableProducts,
+          currency
+        );
+        // Take remainder of array, check other promotions for discounts via PromotionOptimiser
+        const remainingProducts = qualifiedProducts.splice(-remainder);
+        const recursionDiscount = PromotionOptimiser.getBestDiscount(
+          remainingProducts,
+          currency
+        );
+        // Tally-up partial and recursion discount
+        const discount = partialDiscount + recursionDiscount;
+        if (discount > bestResult.discount)
+          bestResult = {
+            promotionName: promotion.constructor.name,
+            discount,
+          };
+      }
     });
-    // console.log(bestResult);
     return bestResult.discount;
   }
 }
