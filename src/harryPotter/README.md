@@ -18,6 +18,10 @@ The mission is to write a piece of code to calculate the price of any conceivabl
 npm install
 ```
 
+# Docs
+
+See [docs](/docs/functions/default.html).
+
 # Test
 
 ```

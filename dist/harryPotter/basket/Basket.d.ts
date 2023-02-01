@@ -1,4 +1,4 @@
-import { Product } from './productManagement/Product';
+import { Product } from '../productManagement/Product';
 /**
  * @description Basket Class, represents a shopping cart/ basket. Conext Pattern.
  */
