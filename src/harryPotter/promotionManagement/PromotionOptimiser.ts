@@ -59,10 +59,7 @@ export class PromotionOptimiser {
         );
         if (discount > result.totalDiscount)
           result = {
-            promotionNames: [
-              promotion.constructor.name,
-              ...result.promotionNames,
-            ],
+            promotionNames: [promotion.constructor.name],
             totalDiscount: discount,
           };
       }
