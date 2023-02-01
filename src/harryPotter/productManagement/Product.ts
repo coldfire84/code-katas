@@ -1,5 +1,5 @@
+// Internal Imports
 import { v4 as uuid } from 'uuid';
-
 /**
  * @descriptionPrice Interace. Product Management B/C.
  */

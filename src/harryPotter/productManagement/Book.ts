@@ -1,5 +1,5 @@
+// Internal Imports
 import { Product, Price } from './Product';
-
 /**
  * @description Book Interace. Product Management B/C.
  */

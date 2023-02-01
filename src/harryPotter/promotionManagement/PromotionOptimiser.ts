@@ -56,17 +56,17 @@ export class PromotionOptimiser {
       }
       // Remainder, calculate discount against what is divisble and perform recursion on remainder
       else {
-        // Split array into number of products divisible by promotion
+        // Split basket qualified products into number divisible by promotion
         const discountableProducts = qualifiedProducts.splice(
           0,
           qualifiedProducts.length - remainder
         );
-        // Calculate discount on promotion-applicable products
+        // Calculate discount on basket qualified products
         const partialDiscount = promotion.calculateDiscount(
           discountableProducts,
           currency
         );
-        // Take remainder of array, check other promotions for discounts via PromotionOptimiser
+        // Take remainder of basket qualified products, check other promotions for discounts via PromotionOptimiser/ recursion
         const remainingProducts = qualifiedProducts.splice(-remainder);
         const recursionDiscount = PromotionOptimiser.getBestDiscount(
           remainingProducts,

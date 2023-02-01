@@ -17,7 +17,7 @@ export abstract class Promotion {
   }
   /**
    * @description Checks supplied items against given Promotion and returns products that
-   *   fall in-scope of promotion.
+   *   fall in-scope of/ qualified for promotion.
    * @param {Array<Product>} items
    * @param {string} currency
    * @param {Promotion} promotion
