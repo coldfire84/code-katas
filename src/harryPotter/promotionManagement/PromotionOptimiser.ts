@@ -6,6 +6,13 @@ import { BuyFourHarryPotterBooksSave20Percent } from './BuyFourHarryPotterBooksS
 import { BuyFiveHarryPotterBooksSave25Percent } from './BuyFiveHarryPotterBooksSave25Percent';
 import { Product } from '../productManagement/Product';
 /**
+ * @description Return Interface for PromotionOptimiser
+ */
+interface PromotionOptimiserReturn {
+  promotionNames: Array<string>;
+  totalDiscount: number;
+}
+/**
  * @description Promotion Optimiser, used to find best promotion. Uses Optimiser Pattern.
  */
 export class PromotionOptimiser {
@@ -21,18 +28,20 @@ export class PromotionOptimiser {
       new BuyFiveHarryPotterBooksSave25Percent(),
     ];
   }
+
   /**
    * @description Iterates through each promotion and works out best discount available against basket
    * @param {Array<Product>} items
    * @return {number}
    */
-  static getBestDiscount(items: Array<Product>, currency: string): number {
-    let bestResult: {
-      promotionName: string;
-      discount: number;
-    } = {
-      promotionName: '',
-      discount: 0,
+  static getBestDiscount(
+    items: Array<Product>,
+    currency: string
+  ): PromotionOptimiserReturn {
+    // Create default result, used in comparing results from each Promotion Strategy
+    let result: PromotionOptimiserReturn = {
+      promotionNames: [],
+      totalDiscount: 0,
     };
     // Iterate through promotions to calculate best discount
     this.promotions().map((promotion) => {
@@ -48,10 +57,10 @@ export class PromotionOptimiser {
           qualifiedProducts,
           currency
         );
-        if (discount > bestResult.discount)
-          bestResult = {
-            promotionName: promotion.constructor.name,
-            discount,
+        if (discount > result.totalDiscount)
+          result = {
+            promotionNames: [promotion.constructor.name],
+            totalDiscount: discount,
           };
       }
       // Remainder, calculate discount against what is divisble and perform recursion on remainder
@@ -73,14 +82,17 @@ export class PromotionOptimiser {
           currency
         );
         // Tally-up partial and recursion discount
-        const discount = partialDiscount + recursionDiscount;
-        if (discount > bestResult.discount)
-          bestResult = {
-            promotionName: promotion.constructor.name,
-            discount,
+        const discount = partialDiscount + recursionDiscount.totalDiscount;
+        if (discount > result.totalDiscount)
+          result = {
+            promotionNames: [
+              promotion.constructor.name,
+              ...recursionDiscount.promotionNames,
+            ],
+            totalDiscount: discount,
           };
       }
     });
-    return bestResult.discount;
+    return result;
   }
 }

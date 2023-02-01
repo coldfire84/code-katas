@@ -2,6 +2,15 @@
 import { Product } from '../productManagement/Product';
 import { PromotionOptimiser } from '../promotionManagement/PromotionOptimiser';
 /**
+ * @description Interface for Basket calculatetotal() return
+ */
+interface BasketTotalReturn {
+  listPrice: number;
+  discount: number;
+  total: number;
+  promotions: Array<string>;
+}
+/**
  * @description Basket Class, represents a shopping cart/ basket. Conext Pattern.
  */
 export class Basket {
@@ -33,9 +42,9 @@ export class Basket {
    * @description Returns total payable, after discounts
    * @returns {number}
    */
-  calculateTotal(): number {
+  calculateTotal(): BasketTotalReturn {
     // Get list price/ total for basket
-    const total = this.items.reduce((acc, item) => {
+    const listPrice = this.items.reduce((acc, item) => {
       const price = item.price.find((obj) => (obj.currency = this.currency));
       acc += price?.amount ? price.amount : 0;
       return acc;
@@ -45,6 +54,11 @@ export class Basket {
       this.items,
       this.currency
     );
-    return total - discount;
+    return {
+      listPrice,
+      discount: discount.totalDiscount,
+      total: listPrice - discount.totalDiscount,
+      promotions: discount.promotionNames,
+    };
   }
 }

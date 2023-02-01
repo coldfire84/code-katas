@@ -1,5 +1,14 @@
 import { Product } from '../productManagement/Product';
 /**
+ * @description Interface for Basket calculatetotal() return
+ */
+interface BasketTotalReturn {
+    listPrice: number;
+    discount: number;
+    total: number;
+    promotions: Array<string>;
+}
+/**
  * @description Basket Class, represents a shopping cart/ basket. Conext Pattern.
  */
 export declare class Basket {
@@ -24,5 +33,6 @@ export declare class Basket {
      * @description Returns total payable, after discounts
      * @returns {number}
      */
-    calculateTotal(): number;
+    calculateTotal(): BasketTotalReturn;
 }
+export {};
