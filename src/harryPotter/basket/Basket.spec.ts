@@ -1,6 +1,5 @@
 import { Basket } from './Basket';
 import {
-  randomBook,
   harryPotter1,
   harryPotter2,
   harryPotter3,
@@ -8,6 +7,11 @@ import {
   harryPotter5,
   harryPotter6,
   harryPotter7,
+  roaldDahl1,
+  roaldDahl2,
+  roaldDahl3,
+  roaldDahl4,
+  roaldDahl5,
 } from '../productManagement/productData';
 
 describe('Basket Service', () => {
@@ -28,12 +32,12 @@ describe('Basket Service', () => {
     expect(result.promotions).toEqual(['BuyTwoHarryPotterBooksSave5Percent']);
   });
 
-  it('calculateTotal: should **not** apply 5% discount when purchasing one Harry Potter book, and a random book', async () => {
+  it('calculateTotal: should **not** apply 5% discount when purchasing one Harry Potter book, and a Roald Dahl book', async () => {
     const basket = new Basket();
     basket.addItem(harryPotter1);
-    basket.addItem(randomBook);
+    basket.addItem(roaldDahl1);
     const result = basket.calculateTotal();
-    expect(result.total).toEqual(16);
+    expect(result.total).toEqual(20);
     expect(result.promotions).toEqual([]);
   });
 
@@ -180,6 +184,26 @@ describe('Basket Service', () => {
     expect(result.promotions).toEqual([
       'BuyFiveHarryPotterBooksSave25Percent',
       'BuyTwoHarryPotterBooksSave5Percent',
+    ]);
+  });
+
+  it('calculateTotal: should apply 33% discount when purchasing 9 Roald Dahl Books', async () => {
+    const basket = new Basket();
+    basket.addItem(roaldDahl1);
+    basket.addItem(roaldDahl2);
+    basket.addItem(roaldDahl3);
+    basket.addItem(roaldDahl4);
+    basket.addItem(roaldDahl5);
+    basket.addItem(roaldDahl1);
+    basket.addItem(roaldDahl2);
+    basket.addItem(roaldDahl3);
+    basket.addItem(roaldDahl4);
+    const result = basket.calculateTotal();
+    expect(result.total).toEqual(72.36);
+    expect(result.promotions).toEqual([
+      'BuyThreeBooksGetOneFree',
+      'BuyThreeBooksGetOneFree',
+      'BuyThreeBooksGetOneFree',
     ]);
   });
 });

@@ -54,11 +54,14 @@ export class Basket {
       this.items,
       this.currency
     );
-    return {
+    // Construct result
+    const result = {
       listPrice,
       discount: discount.totalDiscount,
       total: listPrice - discount.totalDiscount,
       promotions: discount.promotionNames,
     };
+    console.log(result);
+    return result;
   }
 }

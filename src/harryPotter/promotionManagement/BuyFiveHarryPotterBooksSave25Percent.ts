@@ -1,13 +1,13 @@
 // Internal Imports
 import { Promotion } from './Promotion';
-import { qualifyingProducts } from './qualifyingProducts';
+import { harryPotterBooks } from './qualifyingProducts';
 /**
  * @description By five, save 25% Promotion, uses Strategy Pattern
  */
 export class BuyFiveHarryPotterBooksSave25Percent extends Promotion {
   constructor() {
     super();
-    this.qualifyingProducts = qualifyingProducts;
+    this.qualifyingProducts = harryPotterBooks;
     this.discount = 0.25; // 20%
     this.qualifyingProductCount = 5;
     this.allowMultiplesOfSameProduct = false;

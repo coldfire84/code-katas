@@ -4,6 +4,7 @@ import { BuyThreeHarryPotterBooksSave10Percent } from './BuyThreeHarryPotterBook
 import { BuyTwoHarryPotterBooksSave5Percent } from './BuyTwoHarryPotterBooksSave5Percent';
 import { BuyFourHarryPotterBooksSave20Percent } from './BuyFourHarryPotterBooksSave20Percent';
 import { BuyFiveHarryPotterBooksSave25Percent } from './BuyFiveHarryPotterBooksSave25Percent';
+import { BuyThreeBooksGetOneFree } from './BuyThreeBooksGetOneFree';
 import { Product } from '../productManagement/Product';
 /**
  * @description Return Interface for PromotionOptimiser
@@ -17,7 +18,7 @@ interface PromotionOptimiserReturn {
  */
 export class PromotionOptimiser {
   /**
-   * @description Enum for all Promotions
+   * @description Enum for all Promotions, add new promotions here
    * @return {Array<Promotion>}
    */
   static promotions(): Array<Promotion> {
@@ -26,6 +27,7 @@ export class PromotionOptimiser {
       new BuyThreeHarryPotterBooksSave10Percent(),
       new BuyFourHarryPotterBooksSave20Percent(),
       new BuyFiveHarryPotterBooksSave25Percent(),
+      new BuyThreeBooksGetOneFree(),
     ];
   }
 
@@ -57,11 +59,16 @@ export class PromotionOptimiser {
           qualifiedProducts,
           currency
         );
-        if (discount > result.totalDiscount)
+        if (discount > result.totalDiscount) {
+          // For each time the promotion is applied, add to result.promotionNames
+          const promotionAppliedTimes = Array(
+            qualifiedProducts.length / promotion.qualifyingProductCount
+          ).fill(promotion.constructor.name);
           result = {
-            promotionNames: [promotion.constructor.name],
+            promotionNames: [...promotionAppliedTimes],
             totalDiscount: discount,
           };
+        }
       }
       // Remainder, calculate discount against what is divisble and perform recursion on remainder
       else {
