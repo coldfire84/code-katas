@@ -61,7 +61,7 @@ export class Basket {
       total: listPrice - discount.totalDiscount,
       promotions: discount.promotionNames,
     };
-    console.log(result);
+    // console.log(result);
     return result;
   }
 }

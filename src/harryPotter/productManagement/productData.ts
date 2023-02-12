@@ -61,13 +61,3 @@ export const harryPotter7 = new Book(
   [{ currency: 'GBP', amount: 8 }],
   '19519c39-c74f-4d4d-b2ff-f33aff9e1efa'
 );
-
-// export const books = [
-//   harryPotter1,
-//   harryPotter2,
-//   harryPotter3,
-//   harryPotter4,
-//   harryPotter5,
-//   harryPotter6,
-//   harryPotter7,
-// ];
