@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BuyThreeBooksGetOneFree = void 0;
+// Internal Imports
+const Promotion_1 = require("./Promotion");
+const qualifyingProducts_1 = require("./qualifyingProducts");
+/**
+ * @description By two, save 5% Promotion, uses Strategy Pattern
+ */
+class BuyThreeBooksGetOneFree extends Promotion_1.Promotion {
+    constructor() {
+        super();
+        this.qualifyingProducts = qualifyingProducts_1.roaldDahlBooks;
+        this.discount = 0.33; // 33%
+        this.qualifyingProductCount = 3;
+        this.allowMultiplesOfSameProduct = true;
+    }
+}
+exports.BuyThreeBooksGetOneFree = BuyThreeBooksGetOneFree;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQnV5VGhyZWVCb29rc0dldE9uZUZyZWUuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi9zcmMvaGFycnlQb3R0ZXIvcHJvbW90aW9uTWFuYWdlbWVudC9CdXlUaHJlZUJvb2tzR2V0T25lRnJlZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFBQSxtQkFBbUI7QUFDbkIsMkNBQXdDO0FBQ3hDLDZEQUFzRDtBQUN0RDs7R0FFRztBQUNILE1BQWEsdUJBQXdCLFNBQVEscUJBQVM7SUFDcEQ7UUFDRSxLQUFLLEVBQUUsQ0FBQztRQUNSLElBQUksQ0FBQyxrQkFBa0IsR0FBRyxtQ0FBYyxDQUFDO1FBQ3pDLElBQUksQ0FBQyxRQUFRLEdBQUcsSUFBSSxDQUFDLENBQUMsTUFBTTtRQUM1QixJQUFJLENBQUMsc0JBQXNCLEdBQUcsQ0FBQyxDQUFDO1FBQ2hDLElBQUksQ0FBQywyQkFBMkIsR0FBRyxJQUFJLENBQUM7SUFDMUMsQ0FBQztDQUNGO0FBUkQsMERBUUMiLCJzb3VyY2VzQ29udGVudCI6WyIvLyBJbnRlcm5hbCBJbXBvcnRzXG5pbXBvcnQgeyBQcm9tb3Rpb24gfSBmcm9tICcuL1Byb21vdGlvbic7XG5pbXBvcnQgeyByb2FsZERhaGxCb29rcyB9IGZyb20gJy4vcXVhbGlmeWluZ1Byb2R1Y3RzJztcbi8qKlxuICogQGRlc2NyaXB0aW9uIEJ5IHR3bywgc2F2ZSA1JSBQcm9tb3Rpb24sIHVzZXMgU3RyYXRlZ3kgUGF0dGVyblxuICovXG5leHBvcnQgY2xhc3MgQnV5VGhyZWVCb29rc0dldE9uZUZyZWUgZXh0ZW5kcyBQcm9tb3Rpb24ge1xuICBjb25zdHJ1Y3RvcigpIHtcbiAgICBzdXBlcigpO1xuICAgIHRoaXMucXVhbGlmeWluZ1Byb2R1Y3RzID0gcm9hbGREYWhsQm9va3M7XG4gICAgdGhpcy5kaXNjb3VudCA9IDAuMzM7IC8vIDMzJVxuICAgIHRoaXMucXVhbGlmeWluZ1Byb2R1Y3RDb3VudCA9IDM7XG4gICAgdGhpcy5hbGxvd011bHRpcGxlc09mU2FtZVByb2R1Y3QgPSB0cnVlO1xuICB9XG59XG4iXX0=

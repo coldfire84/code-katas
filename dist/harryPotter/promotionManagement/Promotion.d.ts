@@ -17,7 +17,6 @@ export declare abstract class Promotion {
      *   fall in-scope of/ qualified for promotion.
      * @param {Array<Product>} items
      * @param {string} currency
-     * @param {Promotion} promotion
      * @returns {Array<Product>}
      */
     getQualifiedProducts(items: Array<Product>, currency: string): Array<Product>;

@@ -12,7 +12,7 @@ interface PromotionOptimiserReturn {
  */
 export declare class PromotionOptimiser {
     /**
-     * @description Enum for all Promotions
+     * @description Enum for all Promotions, add new promotions here
      * @return {Array<Promotion>}
      */
     static promotions(): Array<Promotion>;

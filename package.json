@@ -10,7 +10,7 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "format": "npx prettier --write .",
-    "docs": "npx typedoc ./src/fizzBuzz/index.ts ./src/harryPotter/index.ts"
+    "docs": "npx typedoc ./src/fizzBuzz/index.ts ./src/harryPotter/index.ts ./src/romanNumerals/index.ts"
   },
   "author": "Chris Bradford",
   "license": "ISC",

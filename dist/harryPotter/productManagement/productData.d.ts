@@ -1,5 +1,9 @@
 import { Book } from './Book';
-export declare const randomBook: Book;
+export declare const roaldDahl1: Book;
+export declare const roaldDahl2: Book;
+export declare const roaldDahl3: Book;
+export declare const roaldDahl4: Book;
+export declare const roaldDahl5: Book;
 export declare const harryPotter1: Book;
 export declare const harryPotter2: Book;
 export declare const harryPotter3: Book;
@@ -7,4 +11,3 @@ export declare const harryPotter4: Book;
 export declare const harryPotter5: Book;
 export declare const harryPotter6: Book;
 export declare const harryPotter7: Book;
-export declare const books: Book[];
